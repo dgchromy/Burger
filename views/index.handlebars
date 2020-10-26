@@ -1,0 +1,76 @@
+<div class ="row" id="burgerRow">
+    <div class="col-md-4" id="notDevoured">
+        <ul>{{#each burgers}} {{#unless this.devoured}}
+            <li>
+                <p>
+                    {{this.id}}. {{this.burger_name}}
+                    <button data-burgerid="{{this.id}}" class="btn btn-info devourbtn">Good Burger!</button>
+                </p>
+            </li>
+            {{/unless}} {{/each}}
+        </ul>
+    </div>
+
+
+
+<div class="col-md-4" id="createBurgerDiv">
+    <h2> Create a good Burger!</h2>
+    <form id="createBurgerForm" class="button-size">
+        <textarea type="text" name="createBurger" id="createBurger"></textarea>
+        <br>
+        <button class="btn btn-danger" type="submit">save Burger</button>
+    </form>
+</div>
+    
+<div class="col-md-4" id="devoured">
+    <ul>
+        {{#each burgers}} {{#if this.devoured}}
+        <li>
+            <p>
+                {{this.id}}. {{this.burger_name}}
+            </p>
+        </li>
+        {{/if}} {{/each}}
+        </ul>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+$("#createBurgerForm").on("submit", function (event) {
+
+event.preventDefault();
+var newBurger = {
+    burger_name: $("#createBurger").val().trim()
+};
+
+$.ajax("/burgers/insert", {
+    type: "POST",
+    data: newBurger
+}).then(
+    function () {
+        console.log("created new burger");
+
+        location.reload();
+    }
+);
+
+});
+$(".devourbtn").on("click", function (event) { 
+    event.preventDefault();
+    var id = $(this).data("burgerid");
+    console.log(id);
+
+    //PUT ajax request
+    $ajax({
+        method: "PUT",
+        url: "/burgers/" + id
+    }).then(
+        function () {
+            console.log ("devoured id", id);
+            location.reload();
+        }
+    );
+});
+</script>
+
