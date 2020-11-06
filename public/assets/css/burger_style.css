@@ -1,0 +1,33 @@
+
+body {
+background-image: url("../img/good-burger-returns-kenan-kel-all-that-reunion-revival.png");
+background-repeat:no-repeat ;
+background-attachment:fixed ;
+background-position:center ;
+background-size:100% 100% ; 
+}
+#burgerRow {
+    -webkit-flex:1;
+    flex: 1;
+}
+
+div.transbox h2, h3, p {
+    color: black;
+}
+
+h1 {
+    color:red;
+    text-align: left;
+}
+
+#devoured, #notDevoured {
+    text-align: left;
+}
+
+.devourbtn {
+    float: right;
+}
+
+ul {
+    list-style-type: none;
+}

@@ -6,16 +6,16 @@ if (process.env.JAWSDB_URL) {
 
 } 
 else {
-    conncetion = mysql.createConnection({
+    connection = mysql.createConnection({
         host:"localhost",
         port: "3306",
-        user: "",
-        password: "",
-        database: "burger_db"
+        user: "	fg7y5m5gfqr9qoj9",
+        password: "rv4tjxt7w8kly5et",
+        database: "burgers_db"
     });
 };
 
-conncetion.connect(function (err) {
+connection.connect(function (err) {
     if (err) throw err;
     console.log("connected as id" + connection.threadId);
 });

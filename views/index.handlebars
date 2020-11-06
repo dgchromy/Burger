@@ -4,7 +4,7 @@
             <li>
                 <p>
                     {{this.id}}. {{this.burger_name}}
-                    <button data-burgerid="{{this.id}}" class="btn btn-info devourbtn">Good Burger!</button>
+                    <button data-burgerid="{{this.id}}" class="btn btn-info devourbtn">devoured!</button>
                 </p>
             </li>
             {{/unless}} {{/each}}
@@ -62,7 +62,7 @@ $(".devourbtn").on("click", function (event) {
     console.log(id);
 
     //PUT ajax request
-    $ajax({
+    $.ajax({
         method: "PUT",
         url: "/burgers/" + id
     }).then(
